@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">熊谷のBMIアプリ</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="heightJP">身長</string>
+    <string name="weightJP">体重</string>
+    <string name="cm">cm</string>
+    <string name="kg">kg</string>
+    <string name="bmiButton">BMIを計算する</string>
+    <string name="description1">あなたのBMIは</string>
+    <string name="description2">でした</string>
+    <string name="bmi"/>
+    <string name="memo"/>
+    <string name="memoHint">自由記入欄</string>
+    <string name="inputButton">入力</string>
+    <string name="recordButton">履歴</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleText">入力</string>
+</resources>
