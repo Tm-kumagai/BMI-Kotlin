@@ -9,125 +9,35 @@
         tools:context=".MainActivity">
     <fragment
             android:layout_width="0dp"
-            android:layout_height="fill_parent" android:name="com.example.bmiapplication.CommonFragment"
-            android:id="@+id/commonFragment"
+            android:layout_height="0dp" android:name="com.example.bmiapplication.InputFragment"
+            android:id="@+id/inputFragment"
+            tools:layout="@layout/fragment_input"
+            app:layout_constraintTop_toBottomOf="@+id/headerFragment"
+            app:layout_constraintBottom_toTopOf="@+id/footerFragment" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" tools:layout="@layout/fragment_common"/>
-    <TextView
-            android:text="@string/heightJP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/heightJP"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/height"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginBottom="100dp"
-            app:layout_constraintBottom_toTopOf="@+id/bmiButton"/>
-    <TextView
-            android:text="@string/weightJP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/weightJP"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/weight"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/heightJP"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/bmiButton"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLength="5"
-            android:background="@drawable/border"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/height"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@+id/heightJP"
-            app:layout_constraintBottom_toBottomOf="@+id/heightJP"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLength="4"
-            android:background="@drawable/border"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/weight"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@+id/weightJP"
-            app:layout_constraintBottom_toBottomOf="@+id/weightJP"/>
-    <TextView
-            android:text="@string/cm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cm"
-            app:layout_constraintTop_toTopOf="@+id/height" app:layout_constraintBottom_toBottomOf="@+id/height"
-            app:layout_constraintStart_toEndOf="@+id/height" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
-    <TextView
-            android:text="@string/kg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/kg"
-            app:layout_constraintTop_toTopOf="@+id/weight" app:layout_constraintBottom_toBottomOf="@+id/weight"
-            app:layout_constraintStart_toEndOf="@+id/weight" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
-    <Button
-            android:text="@string/bmiButton"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:id="@+id/bmiButton"
-            android:textSize="24sp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-            android:text="@string/description1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/description1" android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/bmi"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/memo" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/bmiButton"/>
-    <TextView
-            android:text="@string/description2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/description2" android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="@+id/bmi" app:layout_constraintBottom_toBottomOf="@+id/bmi"
-            app:layout_constraintStart_toEndOf="@+id/bmi" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
-    <TextView
-            android:text="@string/bmi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bmi" android:textSize="30sp" tools:text="BMI"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@+id/description1"
-            app:layout_constraintBottom_toBottomOf="@+id/description1"/>
-    <EditText
+    />
+    <fragment
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:minLines="2"
-            android:maxLines="5"
-            android:background="@drawable/border"
-            android:gravity="start|top"
-            android:ems="10"
-            android:id="@+id/memo"
-            android:hint="@string/memoHint"
-            android:textSize="14sp"
+            android:layout_height="0dp" android:name="com.example.bmiapplication.RecordFragment"
+            android:id="@+id/recordFragment"
+            tools:layout="@layout/fragment_record"
+            app:layout_constraintEnd_toEndOf="@id/headerFragment"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toBottomOf="@+id/headerFragment"
+            app:layout_constraintBottom_toTopOf="@+id/footerFragment"/>
+    <fragment
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:name="com.example.bmiapplication.HeaderFragment"
+            android:id="@+id/headerFragment"
+            tools:layout="@layout/fragment_header"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="32dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="@+id/bmiButton"/>
+            app:layout_constraintStart_toStartOf="parent"/>
+    <fragment
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:name="com.example.bmiapplication.FooterFragment"
+            android:id="@+id/footerFragment"
+            tools:layout="@layout/fragment_footer" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

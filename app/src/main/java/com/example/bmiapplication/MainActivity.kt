@@ -5,7 +5,8 @@ import android.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_common.*
+import kotlinx.android.synthetic.main.fragment_footer.*
+import kotlinx.android.synthetic.main.fragment_input.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,15 +43,15 @@ class MainActivity : AppCompatActivity() {
 //        println(jsonString)
 
         // タイトル変更
-        val title = commonFragment as? CommonFragment
+        val title = headerFragment as? HeaderFragment
         title?.setTitle("入力")
 
         // 履歴用フラグメントを隠す処理
         val recordF = RecordFragment()
         val fragmentManager = this.getSupportFragmentManager()
         val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.hide(recordFragment)
-//            .commit()
+        fragmentTransaction.hide(recordFragment)
+            .commit()
 
 //        val json = """{"height":$inputHeight,"weight":$inputWeight,"bmi":$inputBmi}""""
 //        val bmijson = mapper.readValue<RecordData>(json)
@@ -63,6 +64,10 @@ class MainActivity : AppCompatActivity() {
         // BMIボタン押下処理
         bmiButton.setOnClickListener {
             onBmiTapped()
+        }
+
+        // 保存ボタン押下処理
+        save.setOnClickListener {
             onSaveTapped()
         }
 
@@ -100,46 +105,55 @@ class MainActivity : AppCompatActivity() {
         recordData.bmi = bmi.text.toString()
 
         val today = Date()
-        val dateFormat = SimpleDateFormat("yyyy/MM/dd")
+        val dateFormat = SimpleDateFormat("yyyyMMdd")
         val fileName = "recordData" + dateFormat.format(today)
 
         val gson = Gson()
         gson.toJson(recordData)
         pref.edit().putString("$fileName", gson.toJson(recordData)).commit()
-
-//        pref.edit {
-//            putString("HEIGHT", height.text.toString())
-//            putString("WEIGHT", weight.text.toString())
-//            putString("BMI", bmi.text.toString())
-//        }
     }
 
     // 入力ボタン押下処理メソッド
     private fun onInputTapped() {
-        val record = RecordFragment()
         val fragmentManager = this.getSupportFragmentManager()
         val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.hide(recordFragment)
-//            .commit()
+        fragmentTransaction.hide(recordFragment)
+            .show(inputFragment)
+            .commit()
     }
 
     // 履歴ボタン押下処理メソッド
-    private fun onRecordTapped() {
+        fun onRecordTapped(): MutableList<RecordData> {
         // 履歴用データの出力処理
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        println(pref.all)
+        val gson = Gson()
+        val bmiRecordList: MutableList<RecordData> = mutableListOf()
 
-//        val gson = Gson()
-//        val recordData = gson.fromJson(pref.getString("", ""), RecordData::class.java)
+        pref.all.forEach {
+            //            println("${it}") // JSON形式そのもの
+//            println("${it.key}") // JSONで登録したkey
+
+            it.value?.let {
+                val jsonString = it as String
+                val objRecordData = gson.fromJson(jsonString, RecordData::class.java)
+
+//                println("${objRecordData}") // RecordData内データ確認用
+
+                bmiRecordList.add(objRecordData)
 
 //        height_data.setText("身長：" + "" + "cm")
 //        weight_data.setText("体重：" + "" + "kg")
 //        bmi_data.setText("BMI：" + "")
 
-        val record = RecordFragment()
+            }
+        }
+
         val fragmentManager = this.getSupportFragmentManager()
         val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.show(recordFragment)
-//            .commit()
+        fragmentTransaction.hide(inputFragment)
+            .show(recordFragment)
+            .commit()
+
+        return bmiRecordList
     }
 }

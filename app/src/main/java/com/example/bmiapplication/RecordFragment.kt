@@ -1,14 +1,11 @@
 package com.example.bmiapplication
 
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_record.*
 
 
@@ -35,26 +32,36 @@ class RecordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = bmirecord_list
-//        val adapter = ViewAdapter(createDataList())
+        val adapter = ViewAdapter(createDataList())
 
-//        recyclerView.setHasFixedSize(true)
-//        recyclerView.layoutManager = LinearLayoutManager(activity)
-//        recyclerView.adapter = adapter
-//    }
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = adapter
+    }
 
-        fun createDataList(): List<RecordData> {
-            val pref = PreferenceManager.getDefaultSharedPreferences(activity)
-            val gson = Gson()
-            val recordData = gson.fromJson(pref.getString("recordData", ""), RecordData::class.java)
-            val dataList = mutableListOf<RecordData>()
-            for (i in 0..49) {
-                val data: RecordData = RecordData().also {
-                    it.height = "aaa"
-                    it.weight = "bbb"
-                }
-                dataList.add(data)
+    private fun createDataList(): List<RecordData> {
+
+        val dataList = mutableListOf<RecordData>()
+        for (i in 0..49) {
+            val data: RecordData = RecordData().also {
+                it.height = "タイトル" + i + "だよ"
+                it.weight = "詳細" + i + "個目だよ"
+                it.bmi = "BMI" + i + "番目"
             }
-            return dataList
+            dataList.add(data)
         }
+        return dataList
+        /*
+        val bmiRecordList = MainActivity().onRecordTapped()
+        for (i in 0..bmiRecordList.size) {
+            val data: RecordData = RecordData().also {
+                it.date = bmiRecordList[i].date
+                it.height = bmiRecordList[i].height
+                it.weight = bmiRecordList[i].weight
+                it.bmi = bmiRecordList[i].bmi
+            }
+            bmiRecordList.add(data)
+        }
+        return bmiRecordList*/
     }
 }

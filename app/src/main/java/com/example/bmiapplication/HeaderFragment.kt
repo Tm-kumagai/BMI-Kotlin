@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_common.*
+import kotlinx.android.synthetic.main.fragment_header.*
 
 
 //// TODO: Rename parameter arguments, choose names that match
@@ -18,14 +18,14 @@ import kotlinx.android.synthetic.main.fragment_common.*
  * A simple [Fragment] subclass.
  *
  */
-class CommonFragment : Fragment() {
+class HeaderFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_common, container, false)
+        return inflater.inflate(R.layout.fragment_header, container, false)
     }
 
     fun setTitle(title: String) {
