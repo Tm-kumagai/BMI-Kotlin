@@ -20,4 +20,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titleText">入力</string>
     <string name="saveButton">保存</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

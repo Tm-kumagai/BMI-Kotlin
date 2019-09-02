@@ -7,37 +7,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-    <fragment
+
+    <View
             android:layout_width="0dp"
-            android:layout_height="0dp" android:name="com.example.bmiapplication.InputFragment"
-            android:id="@+id/inputFragment"
-            tools:layout="@layout/fragment_input"
-            app:layout_constraintTop_toBottomOf="@+id/headerFragment"
-            app:layout_constraintBottom_toTopOf="@+id/footerFragment" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="1dp"
+            android:id="@+id/line_horizontal2"
             app:layout_constraintStart_toStartOf="parent"
-    />
-    <fragment
-            android:layout_width="0dp"
-            android:layout_height="0dp" android:name="com.example.bmiapplication.RecordFragment"
-            android:id="@+id/recordFragment"
-            tools:layout="@layout/fragment_record"
-            app:layout_constraintEnd_toEndOf="@id/headerFragment"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintTop_toBottomOf="@+id/headerFragment"
-            app:layout_constraintBottom_toTopOf="@+id/footerFragment"/>
-    <fragment
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" android:name="com.example.bmiapplication.HeaderFragment"
-            android:id="@+id/headerFragment"
-            tools:layout="@layout/fragment_header"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-    <fragment
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" android:name="com.example.bmiapplication.FooterFragment"
-            android:id="@+id/footerFragment"
-            tools:layout="@layout/fragment_footer" app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="visible"
+            android:background="@android:color/background_dark" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="56dp"/>
+
+    <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/line_horizontal2"
+            app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/record"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            app:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_record"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/input"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            app:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/record"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

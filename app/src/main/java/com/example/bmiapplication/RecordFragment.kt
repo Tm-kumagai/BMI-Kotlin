@@ -1,11 +1,14 @@
 package com.example.bmiapplication
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.bmi1item.*
 import kotlinx.android.synthetic.main.fragment_record.*
 
 
@@ -41,27 +44,24 @@ class RecordFragment : Fragment() {
 
     private fun createDataList(): List<RecordData> {
 
-        val dataList = mutableListOf<RecordData>()
-        for (i in 0..49) {
-            val data: RecordData = RecordData().also {
-                it.height = "タイトル" + i + "だよ"
-                it.weight = "詳細" + i + "個目だよ"
-                it.bmi = "BMI" + i + "番目"
+        // 履歴用データの出力処理
+        val pref = PreferenceManager.getDefaultSharedPreferences(activity)
+        val gson = Gson()
+        val bmiRecordList: MutableList<RecordData> = mutableListOf()
+
+        pref.all.forEach {
+            // println("${it}") // JSON形式そのもの
+            // println("${it.key}") // JSONで登録したkey
+
+            it.value?.let {
+                val jsonString = it as String
+                val objRecordData = gson.fromJson(jsonString, RecordData::class.java)
+
+                // println("${objRecordData}") // RecordData内データ確認用
+
+                bmiRecordList.add(objRecordData)
             }
-            dataList.add(data)
         }
-        return dataList
-        /*
-        val bmiRecordList = MainActivity().onRecordTapped()
-        for (i in 0..bmiRecordList.size) {
-            val data: RecordData = RecordData().also {
-                it.date = bmiRecordList[i].date
-                it.height = bmiRecordList[i].height
-                it.weight = bmiRecordList[i].weight
-                it.bmi = bmiRecordList[i].bmi
-            }
-            bmiRecordList.add(data)
-        }
-        return bmiRecordList*/
+        return bmiRecordList
     }
 }
